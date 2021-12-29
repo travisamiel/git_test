@@ -14,25 +14,41 @@
             return options[move];
         };
 
+        let score = 0;
+
         function playRound(playerSelection, computerSelection) {
             let playersSelection = playerSelection.toLowerCase();
             if (playersSelection === computerSelection) {
-                return "It's a tie!";
+                console.log("You threw the same as the computer.");
+                return score;
             } else if (playersSelection == 'rock' && computerSelection == 'scissors') {
-                return "You beat the computer!";
+                score++;
+                console.log("Your rock beat the computer's scissors.");
+                return score;
             } else if (playersSelection == 'paper' && computerSelection == 'rock') {
-                return "You beat the computer!";
+                score++;
+                console.log("Your paper beat the computer's rock.");
             } else if (playersSelection == 'scissors' && computerSelection == 'paper') {
-                return "You beat the computer!";
+                score++;
+                console.log("Your scissors beat the computer's paper.");
             } else {
-                return "You have lost!";
+                console.log("You have lost this round!");
             }
         };
 
-        const playerSelection = "rock";
-        const computerSelection = computerPlay();
-        
-        
+        function game() {
+            for (let i = 0; i < 5; i++) {
+                let playerSelection = prompt("What do you want to throw?");
+                const computerSelection = computerPlay();
+                playRound(playerSelection, computerSelection);
+            }
+            if (score >= 3) {
+                console.log("You won " + score + "out of five rounds, YOU WIN!");
+            } else {
+                console.log("You only won " + score + " out of five rounds, YOU LOST!!")
+            };
+        };
+        game();
     </script>
 </body>
 </html>
