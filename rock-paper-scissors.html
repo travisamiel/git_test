@@ -7,48 +7,71 @@
     <title>RPS</title>
 </head>
 <body>
+    <h1>It's Rock, Paper, Scissors!</h1>
+    <div>
+        <p>What do you throw:</p>
+        <button>Rock</button>
+        <button>Paper</button>
+        <button>Scissors</button>
+    </div>
+    <div>
+        <div>SCORE: </div><div id="results"></div>
+        <div>ROUNDS LEFT: <div></div><div id="round"></div>
+    </div>
     <script>
+        let score = 0;
+        let roundNumber = 5;
+        const theScore = document.querySelector('#results');
+        const theRound = document.querySelector('#round');
+        theScore.textContent = score;
+        theRound.textContent = roundNumber;
+
         function computerPlay() {
             const options = ['rock', 'paper', 'scissors'];
             const move = Math.floor(Math.random() * options.length);
             return options[move];
         };
 
-        let score = 0;
-
         function playRound(playerSelection, computerSelection) {
             let playersSelection = playerSelection.toLowerCase();
             if (playersSelection === computerSelection) {
                 console.log("You threw the same as the computer.");
-                return score;
             } else if (playersSelection == 'rock' && computerSelection == 'scissors') {
                 score++;
                 console.log("Your rock beat the computer's scissors.");
-                return score;
+                roundNumber--;
             } else if (playersSelection == 'paper' && computerSelection == 'rock') {
                 score++;
                 console.log("Your paper beat the computer's rock.");
+                roundNumber--;
             } else if (playersSelection == 'scissors' && computerSelection == 'paper') {
                 score++;
                 console.log("Your scissors beat the computer's paper.");
+                roundNumber--;
             } else {
                 console.log("You have lost this round!");
+                roundNumber--;
             }
-        };
+            theScore.textContent = score;
+            theRound.textContent = roundNumber;
 
-        function game() {
-            for (let i = 0; i < 5; i++) {
-                let playerSelection = prompt("What do you want to throw?");
-                const computerSelection = computerPlay();
-                playRound(playerSelection, computerSelection);
-            }
-            if (score >= 3) {
-                console.log("You won " + score + "out of five rounds, YOU WIN!");
-            } else {
-                console.log("You only won " + score + " out of five rounds, YOU LOST!!")
+            if (roundNumber === 0) {
+                alert('the game is over!');
+                if (score >= 3) {
+                    alert("You won " + score + " out of five rounds, YOU WIN!");
+                } else {
+                    alert("You only won " + score + " out of five rounds, YOU LOST!!")
+                };
             };
         };
-        game();
+
+        const selection = document.querySelectorAll('button');
+        selection.forEach((button) => {
+            button.addEventListener('click', () => {
+                let computerSelection = computerPlay();
+                playRound(button.textContent, computerSelection);
+            });
+        });
     </script>
 </body>
 </html>
