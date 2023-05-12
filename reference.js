@@ -8,7 +8,7 @@ console.log(map1);
 // Expected output: Array [2, 8, 18, 32]
 
   
-// Object contructors
+// Object
 function Player(name, marker) {
     this.name = name
     this.marker = marker
@@ -27,9 +27,8 @@ function Player(name, marker) {
   }
 
 
-// constructors - functions are on the prototpye
+// Class constructors - functions are on the prototpye
 class Car{
-
     constructor(make, model, year, color){
       this.make = make;
       this.model = model;

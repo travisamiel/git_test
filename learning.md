@@ -1,13 +1,18 @@
 ## What's confusing today
-- Geters and Setters
+- Functions with functions in their parameters
 
 ## Topics to confirm knowledge of
-- Inheritance vs Factory Function vs Constructors
+- Geters and Setters
 
 ## A Glossary of my own
+class: a blueprint
+object: the house, with actual properties
+
 this: when you have objects, various parts of code that repeat, you need a way for the object to refer to refer to itself. imagine a dozens robots, and you say lift arm. whose arm? the arm of robot doing the command, this one.
 
-closure: a function that has access to variables in its 
+closure: a function within another function, and the inner function has access to the scope in the outer function
+
+Arrow functions: good for callbacks and anonymous functions
 
 ### prototypal inheritance
 ## my definintion
